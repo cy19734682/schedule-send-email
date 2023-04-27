@@ -12,6 +12,6 @@ jobs:
       - uses: actions/setup-node@v1
       - name: Run Project
         run: |
-        npm install
-        cross-env MAILL_USER=${{secrets.MAILL_USER}} MAILL_PASS=${{secrets.MAILL_PASS}} MAILL_TO=${{secrets.MAILL_TO}} WEATHER_KEY=${{secrets.WEATHER_KEY}} TIANXING_KEY=${{secrets.TIANXING_KEY}} node src/index.js
+          npm install
+          cross-env MAILL_USER=${{secrets.MAILL_USER}} MAILL_PASS=${{secrets.MAILL_PASS}} MAILL_TO=${{secrets.MAILL_TO}} WEATHER_KEY=${{secrets.WEATHER_KEY}} TIANXING_KEY=${{secrets.TIANXING_KEY}} node src/index.js
 
