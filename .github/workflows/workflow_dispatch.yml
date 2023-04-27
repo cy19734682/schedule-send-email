@@ -32,11 +32,11 @@ jobs:
       - uses: actions/setup-node@v1
       - name: Run Project
         env:
-          MAILL_USER=${{inputs.MAILL_USER}} 
-          MAILL_PASS=${{inputs.MAILL_PASS}} 
-          MAILL_TO=${{inputs.MAILL_TO}} 
-          WEATHER_KEY=${{inputs.WEATHER_KEY}}  
-          TIANXING_KEY=${{inputs.TIANXING_KEY}}
+          MAILL_USER: ${{inputs.MAILL_USER}}
+          MAILL_PASS: ${{inputs.MAILL_PASS}}
+          MAILL_TO: ${{inputs.MAILL_TO}}
+          WEATHER_KEY: ${{inputs.WEATHER_KEY}}
+          TIANXING_KEY: ${{inputs.TIANXING_KEY}}
         run: | 
           npm install
           npm run serve
