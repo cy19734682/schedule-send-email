@@ -31,6 +31,12 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - name: Run Project
+        env:
+          MAILL_USER=${{inputs.MAILL_USER}} 
+          MAILL_PASS=${{inputs.MAILL_PASS}} 
+          MAILL_TO=${{inputs.MAILL_TO}} 
+          WEATHER_KEY=${{inputs.WEATHER_KEY}}  
+          TIANXING_KEY=${{inputs.TIANXING_KEY}}
         run: | 
           npm install
-          cross-env MAILL_USER=${{inputs.MAILL_USER}} MAILL_PASS=${{inputs.MAILL_PASS}} MAILL_TO=${{inputs.MAILL_TO}} WEATHER_KEY=${{inputs.WEATHER_KEY}}  TIANXING_KEY=${{inputs.TIANXING_KEY}} node src/index.js
+          npm run serve

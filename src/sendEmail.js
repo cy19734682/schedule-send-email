@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
-const { user, pass } = require('./config');
-
+const user = process.env.MAILL_USER
+const pass = process.env.MAILL_PASS
 const sendMail = async (data) => {
   let transporter = nodemailer.createTransport({
     host: 'smtp.qq.com',
