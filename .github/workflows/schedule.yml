@@ -1,0 +1,17 @@
+name: 定时发送
+
+on:
+  schedule:
+    - cron: "00 23 * * *" # 该时间为UTC时间，比北京时间晚8个小时，每天早上7点自动执行
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Run Project
+        run: |
+        npm install
+        cross-env MAILL_USER=${{secrets.MAILL_USER}} MAILL_PASS=${{secrets.MAILL_PASS}} MAILL_TO=${{secrets.MAILL_TO}} WEATHER_KEY=${{secrets.WEATHER_KEY}} TIANXING_KEY=${{secrets.TIANXING_KEY}} node src/index.js
+

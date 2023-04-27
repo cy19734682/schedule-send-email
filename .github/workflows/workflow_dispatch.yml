@@ -1,0 +1,36 @@
+name: 手动发送
+
+on:
+  workflow_dispatch:
+    inputs:
+      MAILL_USER:
+        description: '发送者邮箱'
+        required: true
+        default: ''
+      MAILL_PASS:
+        description: '发送者邮箱MTP协议密码'
+        required: true
+        default: ''
+      MAILL_TO:
+        description: '接收方邮箱'
+        required: true
+        default: ''
+      WEATHER_KEY:
+        description: '和风天气key'
+        required: true
+        default: ''
+      TIANXING_KEY:
+        description: '天行数据key'
+        required: true
+        default: ''
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Run Project
+        run: | 
+        npm install
+        cross-env MAILL_USER=${{inputs.MAILL_USER}} MAILL_PASS=${{inputs.MAILL_PASS}} MAILL_TO=${{inputs.MAILL_TO}} WEATHER_KEY=${{inputs.WEATHER_KEY}}  TIANXING_KEY=${{inputs.TIANXING_KEY}} node src/index.js
