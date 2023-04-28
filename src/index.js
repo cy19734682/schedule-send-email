@@ -20,6 +20,7 @@ const emailHtml = require('./emailHtml');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+const nowDay = dayjs().tz('Asia/Chongqing') //获取当前时区时间
 
 const {
   fromDisplayText,
@@ -45,13 +46,13 @@ async function init() {
 
     // 获取one一个文案及图片
     const oneRes = await fetch(
-      `http://api.tianapi.com/txapi/one/index?key=${tianXingKey}`
+      `http://api.tianapi.com/txapi/one/index?key=${tianXingKey}&date=${nowDay.format('YYYY-MM-DD')}`
     );
     const oneData = await oneRes.json();
     const { word, imgurl } = oneData.newslist[0];
 
     // 计算日期
-    const lovingDays = dayjs(dayjs().tz('Asia/Chongqing')).diff(
+    const lovingDays = dayjs(nowDay).diff(
       startDay,
       'days'
     );
@@ -63,7 +64,7 @@ async function init() {
     sendEmail({
       from: fromDisplayText,
       to,
-      subject: fromDisplaySubText + `(${dayjs().format('YYYY年MM月DD日')})`,
+      subject: fromDisplaySubText + `(${nowDay.format('YYYY年MM月DD日')})`,
       html: htmlStr,
     });
   } catch (e) {
