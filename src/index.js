@@ -68,6 +68,7 @@ async function init() {
       html: htmlStr,
     });
   } catch (e) {
+    console.error(e)
     // 发送邮件给自己提示
     sendEmail({
       from: '报错啦',
