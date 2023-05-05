@@ -46,11 +46,11 @@ async function init() {
 
     // 获取one一个文案及图片
     const oneRes = await fetch(
-      `http://api.tianapi.com/txapi/one/index?key=${tianXingKey}&date=${nowDay.format('YYYY-MM-DD')}`
+      `https://apis.tianapi.com/one/index?key=${tianXingKey}&date=${nowDay.format('YYYY-MM-DD')}`
     );
     const oneData = await oneRes.json();
-    const { word, imgurl } = oneData.newslist[0];
-
+    const { word, imgurl } = oneData.result;
+    
     // 计算日期
     const lovingDays = dayjs(nowDay).diff(
       startDay,
