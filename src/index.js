@@ -49,6 +49,7 @@ async function init() {
       `https://apis.tianapi.com/one/index?key=${tianXingKey}&date=${nowDay.format('YYYY-MM-DD')}`
     );
     const oneData = await oneRes.json();
+    console.log(oneData)
     const { word, imgurl } = oneData.result;
     
     // 计算日期
