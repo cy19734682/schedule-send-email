@@ -46,10 +46,9 @@ async function init() {
 
     // 获取one一个文案及图片
     const oneRes = await fetch(
-      `https://apis.tianapi.com/one/index?key=${tianXingKey}&date=${nowDay.format('YYYY-MM-DD')}`
+      `https://apis.tianapi.com/one/index?key=${tianXingKey}}`
     );
     const oneData = await oneRes.json();
-    console.log(oneData)
     const { word, imgurl } = oneData.result;
     
     // 计算日期
